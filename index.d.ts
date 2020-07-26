@@ -1,7 +1,7 @@
 type Handler = (files: any[]) => void;
 type ErrorHandler = (error: any) => void;
 
-declare class ReceiveSharingIntentModule {
+declare class ReceiveSharingIntent {
   static getReceivedFiles: (handler: Handler, error: ErrorHandler) => void;
   static getFileNames: (
     handler: Handler,

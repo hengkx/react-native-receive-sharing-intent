@@ -56,7 +56,12 @@ public class ReceiveSharingIntentHelper {
                 String link = intent.getDataString();
                 WritableMap files = new WritableNativeMap();
                 WritableMap file = new WritableNativeMap();
-                file.putString("weblink", link);
+                if (type.startsWith("image") || type.startsWith("video") || type.startsWith("audio")) {
+                    String filePath = ReceiveSharingIntentGetFileDirectory.getFilePath(context, Uri.parse(link));
+                    file.putString("filePath", filePath);
+                } else {
+                    file.putString("weblink", link);
+                }
                 files.putMap("0", file);
                 promise.resolve(files);
             } else {
